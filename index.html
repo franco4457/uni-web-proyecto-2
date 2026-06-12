@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Pulqui — Conectamos lo que importa</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ============ HEADER / NAVBAR ============ -->
+    <header class="navbar">
+      <div class="container navbar__inner">
+        <a href="#" class="logo">
+          <span class="logo__icon"><i class="fa-solid fa-bus"></i></span>
+          <span class="logo__text">El Pulqui</span>
+        </a>
+
+        <nav class="nav">
+          <a href="#nosotros">Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#recorrido" class="nav__active">Recorrido</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="#" class="btn btn--ghost">Mi Reserva</a>
+          <a href="#" class="btn btn--orange">Reservar Ahora</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <span class="badge">PREMIUM SERVICE</span>
+        <h1 class="hero__title">Conectamos lo que importa:<br />De Almagro a Asunción</h1>
+        <p class="hero__text">
+          Descubra una nueva forma de viajar. Puntualidad, máximo confort y la seguridad que solo El
+          Pulqui puede brindarle en cada kilómetro.
+        </p>
+        <div class="hero__buttons">
+          <a href="#" class="btn btn--orange btn--lg">Ver Horarios</a>
+          <a href="#" class="btn btn--light btn--lg"
+            ><i class="fa-regular fa-star"></i> Conocé nuestra Flota</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUIÉNES SOMOS ============ -->
+    <section class="about" id="nosotros">
+      <div class="container">
+        <h2 class="section-title section-title--left">Quiénes Somos y Qué Hacemos</h2>
+        <span class="underline"></span>
+
+        <div class="about__grid">
+          <!-- Tarjeta historia -->
+          <article class="card card--history">
+            <h3 class="card__heading">
+              <i class="fa-solid fa-clock-rotate-left"></i> Nuestra Historia
+            </h3>
+            <p>
+              La Empresa inicia sus actividades en el rubro del transporte público de pasajeros en
+              el año 1963. Desde entonces, hemos evolucionado de ser una línea local en Santa Fe a
+              convertirnos en el referente de conectividad del norte argentino y rutas
+              internacionales.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span class="stat__num">60+</span>
+                <span class="stat__label">AÑOS DE TRAYECTORIA</span>
+              </div>
+              <div class="stat">
+                <span class="stat__num">500+</span>
+                <span class="stat__label">UNIDADES MODERNAS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Misión / Visión -->
+          <div class="about__side">
+            <article class="card card--mission">
+              <h3 class="card__heading"><i class="fa-solid fa-bullseye"></i> Misión</h3>
+              <p>
+                Unimos distancias y forjamos caminos brindando experiencias de viaje seguras y
+                confortables, entregando lo mejor de nosotros con compromiso y excelencia.
+              </p>
+            </article>
+
+            <article class="card card--vision">
+              <h3 class="card__heading"><i class="fa-solid fa-eye"></i> Visión</h3>
+              <p>
+                Ser la empresa de transporte líder en el norte del país, reconocida por su
+                seguridad, confiabilidad y excelencia en el servicio al cliente.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAPA DE RUTA ============ -->
+    <section class="route" id="recorrido">
+      <div class="container">
+        <h2 class="section-title section-title--center">Mapa de Ruta: Buenos Aires — Asunción</h2>
+        <p class="section-subtitle">
+          Conectando los centros económicos más importantes del cono sur con servicios diarios y
+          horarios flexibles.
+        </p>
+
+        <div class="route__card">
+          <div class="route__info">
+            <ul class="timeline">
+              <li class="timeline__item">
+                <span class="timeline__dot timeline__dot--origin"></span>
+                <div>
+                  <strong>Terminal de Ómnibus Almagro (Buenos Aires)</strong>
+                  <small>Origen · Salida Diaria 18:00hs</small>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__dot timeline__dot--end"
+                  ><i class="fa-solid fa-check"></i
+                ></span>
+                <div>
+                  <strong>Asunción (Paraguay)</strong>
+                  <small>Destino Final · Arribo estimado +18h</small>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="btn btn--orange"
+              ><i class="fa-solid fa-download"></i> Descargar Itinerario Detallado</a
+            >
+          </div>
+
+          <div class="route__map">
+            <img
+              src="images/mapa-ruta.png"
+              alt="Mapa de la ruta Buenos Aires - Asunción"
+              class="route__map-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCIA ONBOARD ============ -->
+    <section class="experience" id="servicios">
+      <div class="container">
+        <h2 class="section-title section-title--center">Experiencia Onboard Premium</h2>
+        <span class="underline underline--center"></span>
+
+        <div class="experience__grid">
+          <article class="feature">
+            <span class="feature__icon"><i class="fa-solid fa-couch"></i></span>
+            <h4>Butacas Cama</h4>
+            <p>Inclinación total de 160° a 180° con apoyapiés y almohadillas viscoelásticas.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature__icon"><i class="fa-solid fa-wifi"></i></span>
+            <h4>Wi-Fi High Speed</h4>
+            <p>Conexión satelital estable durante todo el trayecto para trabajar o disfrutar.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature__icon"><i class="fa-solid fa-utensils"></i></span>
+            <h4>Catering Gourmet</h4>
+            <p>Servicio de snacks y cena caliente según el tramo, con bebidas premium.</p>
+          </article>
+
+          <article class="feature">
+            <span class="feature__icon"><i class="fa-solid fa-temperature-half"></i></span>
+            <h4>Climatización Smart</h4>
+            <p>Control inteligente de temperatura y purificación de aire constante.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contacto">
+      <div class="container cta__box">
+        <h2 class="cta__title">¿Listo para su próxima aventura?</h2>
+        <p class="cta__text">
+          Reserve su pasaje ahora y disfrute de los mejores descuentos para la ruta Buenos Aires -
+          Asunción.
+        </p>
+        <div class="cta__buttons">
+          <a href="#" class="btn btn--orange btn--lg">Reserva tu lugar ahora</a>
+          <a href="#" class="btn btn--outline-light btn--lg">Consultar Tarifas</a>
+        </div>
+
+        <div class="cta__features">
+          <div class="cta__feature">
+            <i class="fa-solid fa-shield-halved"></i><span>Pago 100% Seguro</span>
+          </div>
+          <div class="cta__feature">
+            <i class="fa-solid fa-ticket"></i><span>E-Ticket Directo</span>
+          </div>
+          <div class="cta__feature">
+            <i class="fa-solid fa-headset"></i><span>Soporte 24/7</span>
+          </div>
+          <div class="cta__feature">
+            <i class="fa-solid fa-arrows-rotate"></i><span>Cambio Flexible</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="logo logo--footer">
+            <span class="logo__icon"><i class="fa-solid fa-bus"></i></span>
+            <span class="logo__text">El Pulqui</span>
+          </a>
+          <p>
+            Líderes en transporte de pasajeros, uniendo Argentina con los mejores servicios y la
+            mayor seguridad desde 1963.
+          </p>
+          <div class="footer__social">
+            <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h5>INFORMACIÓN</h5>
+          <a href="#">Políticas de Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+        </div>
+
+        <div class="footer__col">
+          <h5>NEWSLETTER</h5>
+          <form class="newsletter" onsubmit="return false">
+            <input type="email" placeholder="Tu email" aria-label="Tu email" />
+            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <span>© 2024 El Pulqui · Conectamos lo que importa. Todos los derechos reservados.</span>
+          <span>0810 810 9999 · atencionclientes@elpulqui.com.ar</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
