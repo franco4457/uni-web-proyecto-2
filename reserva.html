@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservá tu pasaje — El Pulqui</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Lógica de la reserva -->
+    <script defer src="reserva.js"></script>
+  </head>
+  <body>
+    <!-- ============ HEADER / NAVBAR ============ -->
+    <header class="navbar">
+      <div class="container navbar__inner">
+        <a href="index.html" class="logo">
+          <span class="logo__icon"><i class="fa-solid fa-bus"></i></span>
+          <span class="logo__text">El Pulqui</span>
+        </a>
+
+        <nav class="nav">
+          <a href="index.html#nosotros">Nosotros</a>
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#recorrido">Recorrido</a>
+          <a href="reserva.html" class="nav__active">Reservar</a>
+          <a href="index.html#contacto">Contacto</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="#reservar" class="btn btn--orange">Reservar Ahora</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ RESERVA ============ -->
+    <section class="reserva" id="reservar">
+      <div class="container">
+        <h1 class="section-title section-title--center">Reservá tu pasaje</h1>
+        <span class="underline underline--center"></span>
+        <p class="section-subtitle">
+          Elegí origen y destino, la fecha y el tipo de servicio. El precio se calcula al instante
+          según el tramo del recorrido Buenos Aires — Asunción.
+        </p>
+
+        <div class="reserva__grid">
+          <!-- Formulario -->
+          <form class="reserva__form" id="form-reserva">
+            <div class="field field--row">
+              <div class="field">
+                <label for="origen">Origen</label>
+                <select id="origen" name="origen"></select>
+              </div>
+              <div class="field">
+                <label for="destino">Destino</label>
+                <select id="destino" name="destino"></select>
+              </div>
+            </div>
+
+            <div class="field field--row">
+              <div class="field">
+                <label for="fecha">Fecha de viaje</label>
+                <input type="date" id="fecha" name="fecha" />
+              </div>
+              <div class="field">
+                <label for="horario">Horario de salida</label>
+                <select id="horario" name="horario"></select>
+              </div>
+            </div>
+
+            <fieldset class="field service">
+              <legend>Tipo de servicio</legend>
+              <div class="service__options">
+                <label class="service-option">
+                  <input type="radio" name="servicio" value="normal" />
+                  <span class="service-option__body">
+                    <i class="fa-solid fa-chair"></i>
+                    <strong>Normal</strong>
+                    <small>Butaca estándar reclinable.</small>
+                  </span>
+                </label>
+
+                <label class="service-option">
+                  <input type="radio" name="servicio" value="semicama" checked />
+                  <span class="service-option__body">
+                    <i class="fa-solid fa-couch"></i>
+                    <strong>Semi Cama</strong>
+                    <small>Mayor reclinación y apoyapiés.</small>
+                  </span>
+                </label>
+
+                <label class="service-option">
+                  <input type="radio" name="servicio" value="cama" />
+                  <span class="service-option__body">
+                    <i class="fa-solid fa-bed"></i>
+                    <strong>Cama</strong>
+                    <small>Reclinación de 160° a 180°.</small>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field field--passengers">
+              <label for="pasajeros">Cantidad de pasajeros</label>
+              <input type="number" id="pasajeros" name="pasajeros" value="1" min="1" max="5" />
+            </div>
+
+            <p class="reserva__aviso" id="reserva-aviso" hidden></p>
+
+            <button type="submit" class="btn btn--orange btn--lg" id="confirmar">
+              <i class="fa-solid fa-ticket"></i> Confirmar reserva
+            </button>
+          </form>
+
+          <!-- Resumen en vivo -->
+          <aside class="reserva__summary">
+            <h2 class="reserva__summary-title">Resumen de tu reserva</h2>
+            <ul class="summary-list">
+              <li><span>Tramo</span><strong id="res-tramo">—</strong></li>
+              <li><span>Distancia</span><strong id="res-distancia">—</strong></li>
+              <li><span>Servicio</span><strong id="res-servicio">—</strong></li>
+              <li><span>Pasajeros</span><strong id="res-pasajeros">—</strong></li>
+              <li><span>Precio por pasajero</span><strong id="res-unitario">—</strong></li>
+            </ul>
+            <div class="reserva__total">
+              <span>Total</span>
+              <strong id="res-total">—</strong>
+            </div>
+            <p class="reserva__note">
+              <i class="fa-solid fa-circle-info"></i> Precios estimados en pesos argentinos. Simulación
+              sin valor comercial.
+            </p>
+          </aside>
+        </div>
+
+        <!-- Comprobante -->
+        <div class="reserva__ticket" id="comprobante" hidden>
+          <div class="reserva__ticket-head">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>¡Reserva confirmada!</h2>
+          </div>
+          <ul class="summary-list">
+            <li><span>Tramo</span><strong id="tk-tramo">—</strong></li>
+            <li><span>Fecha</span><strong id="tk-fecha">—</strong></li>
+            <li><span>Salida</span><strong id="tk-horario">—</strong></li>
+            <li><span>Servicio</span><strong id="tk-servicio">—</strong></li>
+            <li><span>Pasajeros</span><strong id="tk-pasajeros">—</strong></li>
+          </ul>
+          <div class="reserva__total">
+            <span>Total abonado</span>
+            <strong id="tk-total">—</strong>
+          </div>
+          <p class="reserva__note">
+            <i class="fa-solid fa-envelope"></i> Te enviaríamos el e-ticket por correo. ¡Buen viaje!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HORARIOS DE SALIDA ============ -->
+    <section class="schedule" id="horarios">
+      <div class="container">
+        <h2 class="section-title section-title--center">Horarios de salida</h2>
+        <span class="underline underline--center"></span>
+        <p class="section-subtitle">
+          Salidas diarias desde la Terminal de Ómnibus Almagro (Buenos Aires) hacia Asunción.
+        </p>
+
+        <div class="schedule__wrap">
+          <table class="schedule__table">
+            <thead>
+              <tr>
+                <th>Salida</th>
+                <th>Servicio</th>
+                <th>Arribo estimado</th>
+                <th>Frecuencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fa-regular fa-clock"></i> 08:00 hs</td>
+                <td>Semi Cama</td>
+                <td>+18 h</td>
+                <td>Diaria</td>
+              </tr>
+              <tr>
+                <td><i class="fa-regular fa-clock"></i> 14:00 hs</td>
+                <td>Normal</td>
+                <td>+18 h</td>
+                <td>Diaria</td>
+              </tr>
+              <tr>
+                <td><i class="fa-regular fa-clock"></i> 18:00 hs</td>
+                <td>Cama</td>
+                <td>+18 h</td>
+                <td>Diaria</td>
+              </tr>
+              <tr>
+                <td><i class="fa-regular fa-clock"></i> 22:00 hs</td>
+                <td>Cama</td>
+                <td>+18 h</td>
+                <td>Diaria</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo logo--footer">
+            <span class="logo__icon"><i class="fa-solid fa-bus"></i></span>
+            <span class="logo__text">El Pulqui</span>
+          </a>
+          <p>
+            Líderes en transporte de pasajeros, uniendo Argentina con los mejores servicios y la
+            mayor seguridad desde 1963.
+          </p>
+          <div class="footer__social">
+            <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h5>INFORMACIÓN</h5>
+          <a href="#">Políticas de Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+        </div>
+
+        <div class="footer__col">
+          <h5>NEWSLETTER</h5>
+          <form class="newsletter" onsubmit="return false">
+            <input type="email" placeholder="Tu email" aria-label="Tu email" />
+            <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <span>© 2024 El Pulqui · Conectamos lo que importa. Todos los derechos reservados.</span>
+          <span>0810 810 9999 · atencionclientes@elpulqui.com.ar</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

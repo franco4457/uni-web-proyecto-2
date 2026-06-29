@@ -369,7 +369,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: stretch;
   /* marco oscuro como en el diseño */
   outline: 14px solid var(--navy-2);
 }
@@ -410,16 +410,52 @@ img {
   background: #21b573;
 }
 
+/* Paradas del recorrido */
+.stops__title {
+  font-size: 0.95rem;
+  color: #1b2a3a;
+  margin: 1.6rem 0 0.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #e6e9ee;
+}
+.stops {
+  display: grid;
+  gap: 0.15rem;
+}
+.stops__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  color: #33414f;
+  font-size: 0.95rem;
+}
+.stops__item i {
+  color: #2b7de9;
+  font-size: 1rem;
+}
+.stops__item--active {
+  background: #eef1f4;
+  font-weight: 700;
+  color: #1b2a3a;
+}
+
 .route__map {
   height: 100%;
+  min-height: 340px;
+  border-radius: 14px;
+  overflow: hidden;
+  /* mismo teal que el fondo de la imagen, para que se vea integrado */
+  background: #14333d;
+  display: grid;
+  place-items: center;
 }
 .route__map-img {
   width: 100%;
   height: 100%;
-  max-height: 360px;
   object-fit: contain;
-  border-radius: 14px;
-  background: #0e2b38;
+  object-position: center;
 }
 
 /* ============================================================
@@ -628,12 +664,308 @@ img {
 }
 
 /* ============================================================
+   Reserva (página reserva.html)
+   ============================================================ */
+.reserva {
+  background: var(--navy);
+  padding: 4rem 0 4rem;
+}
+
+.reserva__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+/* --- Formulario (tarjeta blanca) --- */
+.reserva__form {
+  background: #fff;
+  color: #33414f;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 2.2rem;
+  display: grid;
+  gap: 1.3rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+.field--row {
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.field label,
+.service legend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1b2a3a;
+}
+
+.reserva__form select,
+.reserva__form input[type='date'],
+.reserva__form input[type='number'] {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #cdd5dd;
+  border-radius: 8px;
+  background: #fff;
+  color: #1b2a3a;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.reserva__form select:focus,
+.reserva__form input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(247, 148, 30, 0.18);
+}
+
+.field--passengers input {
+  max-width: 120px;
+}
+
+/* --- Tipo de servicio --- */
+.service {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.service legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+.service__options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+.service-option {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+.service-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.service-option__body {
+  display: grid;
+  gap: 0.25rem;
+  text-align: center;
+  padding: 1rem 0.6rem;
+  border: 2px solid #e2e7ed;
+  border-radius: 12px;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+.service-option__body i {
+  font-size: 1.4rem;
+  color: var(--blue);
+}
+.service-option__body strong {
+  font-size: 0.95rem;
+  color: #1b2a3a;
+}
+.service-option__body small {
+  font-size: 0.75rem;
+  color: #8a96a4;
+  line-height: 1.3;
+}
+.service-option:hover .service-option__body {
+  border-color: rgba(247, 148, 30, 0.5);
+}
+.service-option:has(input:checked) .service-option__body {
+  border-color: var(--orange);
+  background: #fff7ec;
+}
+.service-option:has(input:checked) .service-option__body i {
+  color: var(--orange);
+}
+
+.reserva__aviso {
+  margin: 0;
+  color: #c0392b;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+#confirmar {
+  justify-content: center;
+}
+#confirmar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Panel resumen --- */
+.reserva__summary {
+  background: var(--navy-2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  position: sticky;
+  top: 90px;
+}
+.reserva__summary-title {
+  font-size: 1.15rem;
+  color: var(--blue-light);
+  margin-bottom: 1.2rem;
+}
+
+.summary-list {
+  display: grid;
+  gap: 0.1rem;
+  margin-bottom: 1.2rem;
+}
+.summary-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.summary-list span {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+.summary-list strong {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+}
+
+.reserva__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+.reserva__total span {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.reserva__total strong {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.reserva__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.reserva__note i {
+  color: var(--orange);
+  margin-top: 2px;
+}
+
+/* --- Comprobante --- */
+.reserva__ticket {
+  max-width: 520px;
+  margin: 2rem auto 0;
+  background: #fff;
+  color: #33414f;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 2.2rem;
+  border-top: 6px solid #21b573;
+}
+.reserva__ticket-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+.reserva__ticket-head i {
+  color: #21b573;
+  font-size: 1.8rem;
+}
+.reserva__ticket-head h2 {
+  font-size: 1.3rem;
+  color: #1b2a3a;
+}
+.reserva__ticket .summary-list li {
+  border-bottom: 1px solid #e6e9ee;
+}
+.reserva__ticket .summary-list span {
+  color: #8a96a4;
+}
+.reserva__ticket .summary-list strong {
+  color: #1b2a3a;
+}
+.reserva__ticket .reserva__note {
+  color: #8a96a4;
+}
+
+/* ============================================================
+   Horarios de salida
+   ============================================================ */
+.schedule {
+  background: var(--navy);
+  padding: 2rem 0 5rem;
+}
+.schedule__wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.schedule__table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  color: #33414f;
+  min-width: 520px;
+}
+.schedule__table th,
+.schedule__table td {
+  text-align: left;
+  padding: 0.95rem 1.2rem;
+  border-bottom: 1px solid #e6e9ee;
+  font-size: 0.95rem;
+}
+.schedule__table thead th {
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.schedule__table tbody tr:last-child td {
+  border-bottom: none;
+}
+.schedule__table tbody tr:hover {
+  background: #f4f6f9;
+}
+.schedule__table td i {
+  color: var(--orange);
+  margin-right: 0.4rem;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 900px) {
   .about__grid,
-  .route__card {
+  .route__card,
+  .reserva__grid {
     grid-template-columns: 1fr;
+  }
+  .reserva__summary {
+    position: static;
   }
   .experience__grid,
   .cta__features {
@@ -654,7 +986,9 @@ img {
   .experience__grid,
   .cta__features,
   .footer__grid,
-  .stats {
+  .stats,
+  .field--row,
+  .service__options {
     grid-template-columns: 1fr;
   }
   .footer__bottom-inner {

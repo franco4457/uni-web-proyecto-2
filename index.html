@@ -35,12 +35,12 @@
           <a href="#nosotros">Nosotros</a>
           <a href="#servicios">Servicios</a>
           <a href="#recorrido" class="nav__active">Recorrido</a>
+          <a href="reserva.html">Reservar</a>
           <a href="#contacto">Contacto</a>
         </nav>
 
         <div class="navbar__actions">
-          <a href="#" class="btn btn--ghost">Mi Reserva</a>
-          <a href="#" class="btn btn--orange">Reservar Ahora</a>
+          <a href="reserva.html" class="btn btn--orange">Reservar Ahora</a>
         </div>
       </div>
     </header>
@@ -56,10 +56,7 @@
           Pulqui puede brindarle en cada kilómetro.
         </p>
         <div class="hero__buttons">
-          <a href="#" class="btn btn--orange btn--lg">Ver Horarios</a>
-          <a href="#" class="btn btn--light btn--lg"
-            ><i class="fa-regular fa-star"></i> Conocé nuestra Flota</a
-          >
+          <a href="reserva.html#horarios" class="btn btn--orange btn--lg">Ver Horarios</a>
         </div>
       </div>
     </section>
@@ -145,17 +142,34 @@
                 </div>
               </li>
             </ul>
-            <a href="#" class="btn btn--orange"
-              ><i class="fa-solid fa-download"></i> Descargar Itinerario Detallado</a
-            >
+
+            <h4 class="stops__title">Paradas del recorrido</h4>
+            <ul class="stops">
+              <li class="stops__item"><i class="fa-solid fa-location-dot"></i> Parque Rivadavia</li>
+              <li class="stops__item"><i class="fa-solid fa-location-dot"></i> Rosario</li>
+              <li class="stops__item">
+                <i class="fa-solid fa-location-dot"></i> Santa Fe de la Vera Cruz
+              </li>
+              <li class="stops__item"><i class="fa-solid fa-location-dot"></i> Reconquista</li>
+              <li class="stops__item"><i class="fa-solid fa-location-dot"></i> Resistencia</li>
+              <li class="stops__item"><i class="fa-solid fa-location-dot"></i> Formosa</li>
+              <li class="stops__item stops__item--active">
+                <i class="fa-solid fa-location-dot"></i> Asunción
+              </li>
+            </ul>
           </div>
 
           <div class="route__map">
-            <img
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1ZiEjesMSJqHmWCk4PWt7P6_c7xiSYDo&ehbc=2E312F"
+              width="640"
+              height="480"
+            ></iframe>
+            <!-- <img
               src="images/mapa-ruta.png"
               alt="Mapa de la ruta Buenos Aires - Asunción"
               class="route__map-img"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -204,8 +218,7 @@
           Asunción.
         </p>
         <div class="cta__buttons">
-          <a href="#" class="btn btn--orange btn--lg">Reserva tu lugar ahora</a>
-          <a href="#" class="btn btn--outline-light btn--lg">Consultar Tarifas</a>
+          <a href="reserva.html" class="btn btn--orange btn--lg">Reserva tu lugar ahora</a>
         </div>
 
         <div class="cta__features">
